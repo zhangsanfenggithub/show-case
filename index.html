@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未来幻境 - 虚拟仿真技术专家</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36D399',
+                        accent: '#7E22CE',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
+            }
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-20px); }
+                100% { transform: translateY(0px); }
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-light text-dark">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+                    <i class="fa fa-vr-cardboard text-white text-xl"></i>
+                </div>
+                <span class="text-2xl font-bold text-white text-shadow">未来幻境</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-white hover:text-secondary transition-colors font-medium">首页</a>
+                <a href="#products" class="text-white hover:text-secondary transition-colors font-medium">产品</a>
+                <a href="#features" class="text-white hover:text-secondary transition-colors font-medium">特性</a>
+                <a href="#demo" class="text-white hover:text-secondary transition-colors font-medium">演示</a>
+                <a href="#about" class="text-white hover:text-secondary transition-colors font-medium">关于我们</a>
+                <a href="#contact" class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full transition-all hover:shadow-lg transform hover:-translate-y-0.5">联系我们</a>
+            </nav>
+            
+            <button id="menu-toggle" class="md:hidden text-white text-2xl focus:outline-none">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="#home" class="text-dark hover:text-primary transition-colors font-medium py-2">首页</a>
+                <a href="#products" class="text-dark hover:text-primary transition-colors font-medium py-2">产品</a>
+                <a href="#features" class="text-dark hover:text-primary transition-colors font-medium py-2">特性</a>
+                <a href="#demo" class="text-dark hover:text-primary transition-colors font-medium py-2">演示</a>
+                <a href="#about" class="text-dark hover:text-primary transition-colors font-medium py-2">关于我们</a>
+                <a href="#contact" class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full transition-all hover:shadow-lg text-center">联系我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-dark/80 to-primary/80 z-10"></div>
+            <img src="assets/images/hero-bg.jpg" alt="虚拟仿真背景" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="container mx-auto px-4 z-20 text-center">
+            <h1 class="text-[clamp(2.5rem,6vw,5rem)] font-bold text-white leading-tight mb-6 text-shadow-lg">
+                探索无限可能的<br><span class="text-secondary">虚拟仿真</span>世界
+            </h1>
+            <p class="text-[clamp(1rem,2vw,1.5rem)] text-white/90 max-w-3xl mx-auto mb-10">
+                我们提供领先的虚拟仿真技术，为教育、医疗、工业等多个领域创造沉浸式体验和解决方案
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#demo" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full transition-all hover:shadow-lg transform hover:-translate-y-0.5 text-lg font-medium w-full sm:w-auto">
+                    观看演示视频 <i class="fa fa-play-circle ml-2"></i>
+                </a>
+                <a href="#products" class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-full transition-all hover:shadow-lg transform hover:-translate-y-0.5 text-lg font-medium w-full sm:w-auto">
+                    浏览产品 <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#products" class="text-white/80 hover:text-white">
+                    <i class="fa fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品展示 -->
+    <section id="products" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">我们的虚拟仿真产品</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">从教育到医疗，从工业培训到娱乐体验，我们的产品为各行业提供定制化的虚拟仿真解决方案</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group">
+                    <div class="h-60 overflow-hidden">
+                        <img src="assets/images/product-1.jpg" alt="虚拟实验室" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-dark">虚拟实验室</h3>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">教育</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">提供安全、高效的虚拟实验环境，支持多用户协作，降低实验成本。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold">¥9,800/年起</span>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+                                了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group">
+                    <div class="h-60 overflow-hidden">
+                        <img src="assets/images/product-2.jpg" alt="医疗模拟训练" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-dark">医疗模拟训练</h3>
+                            <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">医疗</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">为医护人员提供高逼真的手术模拟和急救训练，提升专业技能。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold">¥15,800/年起</span>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+                                了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group">
+                    <div class="h-60 overflow-hidden">
+                        <img src="assets/images/product-3.jpg" alt="工业仿真系统" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-dark">工业仿真系统</h3>
+                            <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">工业</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">用于设备操作培训、生产线规划和故障排除，提高生产效率。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold">¥23,800/年起</span>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+                                了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                    查看全部产品 <i class="fa fa-long-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特性展示 -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">为什么选择我们的虚拟仿真解决方案</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我们的技术领先，提供高质量的沉浸式体验，助力各行业创新发展</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa fa-vr-cardboard text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">沉浸式体验</h3>
+                    <p class="text-gray-600">采用最新的VR/AR技术，提供高度逼真的虚拟环境，使用户获得身临其境的体验。</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa fa-users text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">多用户协作</h3>
+                    <p class="text-gray-600">支持多人同时在线协作，共同参与虚拟场景，提高团队协作效率。</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa fa-code text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">定制开发</h3>
+                    <p class="text-gray-600">根据客户需求提供定制化开发服务，满足不同行业、不同场景的特殊需求。</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa fa-shield-alt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">安全可靠</h3>
+                    <p class="text-gray-600">严格的数据安全措施，确保用户数据和隐私安全，系统稳定可靠。</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa fa-chart-line text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">数据分析</h3>
+                    <p class="text-gray-600">提供详细的用户行为数据分析，帮助企业优化培训流程和产品设计。</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa fa-headphones text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">专业支持</h3>
+                    <p class="text-gray-600">提供7×24小时技术支持，确保系统稳定运行，解决用户遇到的问题。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 演示视频区域 -->
+    <section id="demo" class="py-20 bg-gradient-to-br from-primary to-primary/80 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">观看产品演示</h2>
+                <p class="text-white/80 max-w-2xl mx-auto">通过我们精心制作的演示视频，了解虚拟仿真技术如何改变各行业</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden shadow-2xl relative group">
+                    <div class="absolute inset-0 bg-dark/30 flex items-center justify-center cursor-pointer" id="video-cover">
+                        <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all group-hover:scale-110">
+                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                                <i class="fa fa-play text-primary text-2xl ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <iframe id="demo-video" class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&showinfo=0&rel=0&autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                
+                <div class="mt-8 flex flex-wrap gap-4">
+                    <div class="flex-1 min-w-[200px]">
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
+                            <h4 class="font-bold mb-2">虚拟实验室演示</h4>
+                            <p class="text-white/80 text-sm">展示我们的虚拟实验室解决方案如何提供安全、高效的实验环境</p>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-[200px]">
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
+                            <h4 class="font-bold mb-2">医疗模拟训练</h4>
+                            <p class="text-white/80 text-sm">了解我们的医疗模拟训练系统如何提升医护人员的专业技能</p>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-[200px]">
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
+                            <h4 class="font-bold mb-2">工业应用案例</h4>
+                            <p class="text-white/80 text-sm">观看我们的工业仿真系统在生产线规划中的实际应用</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户案例 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">客户案例</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">看看我们的虚拟仿真技术如何帮助各行业客户取得成功</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets/images/case-1.jpg" alt="大学教育案例" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="assets/images/customer-1.jpg" alt="客户头像" class="w-12 h-12 rounded-full object-cover">
+                            <div class="ml-4">
+                                <h4 class="font-bold text-dark">清华大学</h4>
+                                <p class="text-gray-500 text-sm">教育行业</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"通过使用我们的虚拟实验室解决方案，清华大学将实验教学效率提高了40%，同时降低了实验成本。"</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex">
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                            </div>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium text-sm">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets/images/case-2.jpg" alt="医院案例" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="assets/images/customer-2.jpg" alt="客户头像" class="w-12 h-12 rounded-full object-cover">
+                            <div class="ml-4">
+                                <h4 class="font-bold text-dark">北京协和医院</h4>
+                                <p class="text-gray-500 text-sm">医疗行业</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"我们的医疗模拟训练系统帮助北京协和医院显著提高了医生的手术技能，减少了手术失误率。"</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex">
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star-half-alt text-yellow-400"></i>
+                            </div>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium text-sm">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets/images/case-3.jpg" alt="工业案例" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="assets/images/customer-3.jpg" alt="客户头像" class="w-12 h-12 rounded-full object-cover">
+                            <div class="ml-4">
+                                <h4 class="font-bold text-dark">华为技术有限公司</h4>
+                                <p class="text-gray-500 text-sm">工业制造</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"华为采用我们的工业仿真系统优化了生产线布局，提高了生产效率，降低了设备故障率。"</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex">
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                            </div>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium text-sm">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-6">关于我们</h2>
+                    <p class="text-gray-600 mb-6">未来幻境成立于2020年，是一家专注于虚拟仿真技术研发与应用的高科技企业。我们拥有一支由计算机科学、图形学、虚拟现实等领域专家组成的团队，致力于为各行业客户提供高质量的虚拟仿真解决方案。</p>
+                    <p class="text-gray-600 mb-6">我们的使命是通过创新的虚拟仿真技术，帮助企业和机构提高效率、降低成本、提升用户体验，推动各行业的数字化转型。</p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="text-3xl font-bold text-primary mb-2">200+</h4>
+                            <p class="text-gray-600">企业客户</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="text-3xl font-bold text-primary mb-2">50+</h4>
+                            <p class="text-gray-600">技术专家</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="text-3xl font-bold text-primary mb-2">100+</h4>
+                            <p class="text-gray-600">成功案例</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="text-3xl font-bold text-primary mb-2">15+</h4>
+                            <p class="text-gray-600">行业覆盖</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute -top-6 -left-6 w-24 h-24 bg-primary/10 rounded-2xl animate-pulse-slow"></div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary/10 rounded-2xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+                    
+                    <img src="assets/images/team.jpg" alt="我们的团队" class="w-full h-auto rounded-2xl shadow-2xl relative z-10">
+                    
+                    <div class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg z-20">
+                        <h4 class="font-bold text-dark mb-2">我们的愿景</h4>
+                        <p class="text-gray-600">成为全球领先的虚拟仿真技术提供商，为人类创造更加美好的数字化未来。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">联系我们</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">无论您有任何问题或需求，我们都很乐意听取您的意见并为您提供帮助</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-gray-50 rounded-2xl shadow-xl p-8">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fa fa-map-marker-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark mb-1">地址</h4>
+                                <p class="text-gray-600">北京市海淀区中关村科技园区8号楼</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fa fa-phone text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark mb-1">电话</h4>
+                                <p class="text-gray-600">+86 10 8888 8888</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fa fa-envelope text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark mb-1">邮箱</h4>
+                                <p class="text-gray-600">info@future-vision.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fa fa-clock text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark mb-1">工作时间</h4>
+                                <p class="text-gray-600">周一至周五: 9:00 - 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+                            <i class="fa fa-vr-cardboard text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold">未来幻境</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">专注于虚拟仿真技术研发与应用的高科技企业，为各行业提供创新解决方案。</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">产品服务</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">虚拟实验室</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">医疗模拟训练</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">工业仿真系统</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">教育解决方案</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">定制开发服务</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">公司信息</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">客户案例</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">新闻动态</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">加入我们</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">联系方式</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">订阅通讯</h4>
+                    <p class="text-gray-400 mb-4">订阅我们的通讯，获取最新产品和技术信息</p>
+                    <form class="flex">
+                        <input type="email" placeholder="您的邮箱地址" class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-dark">
+                        <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-lg transition-colors">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 未来幻境科技有限公司. 保留所有权利.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">隐私政策</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">服务条款</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Cookie政策</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary hover:bg-primary/90 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 invisible z-50">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-dark/90', 'backdrop-blur-sm', 'shadow-lg');
+                navbar.classList.remove('bg-transparent');
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                navbar.classList.remove('bg-dark/90', 'backdrop-blur-sm', 'shadow-lg');
+                navbar.classList.add('bg-transparent');
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        const videoCover = document.getElementById('video-cover');
+        const demoVideo = document.getElementById('demo-video');
+        videoCover.addEventListener('click', function() {
+            const currentSrc = demoVideo.src;
+            const newSrc = currentSrc.replace('autoplay=0', 'autoplay=1');
+            demoVideo.src = newSrc;
+            videoCover.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
+    
